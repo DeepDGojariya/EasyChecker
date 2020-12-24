@@ -1,0 +1,251 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>EasyChecker | Results</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin-left:170px;
+            margin-top:-20px;
+        }
+         .styled-table-pn{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin-top:-20px;
+
+        }
+
+        .styled-table thead tr,
+         .styled-table-pn thead tr{
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .styled-table th,
+        .styled-table td,
+        .styled-table-pn th,
+        .styled-table-pn td{
+            padding: 12px 15px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #009879;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <section class="text-gray-700 body-font overflow-hidden">
+
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full ">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Results</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Here Is our Predictions</p>
+            </div>
+        </div>
+        <div class="lg:w-1/2 md:w-2/3 mx-auto">
+            <!--<div class="flex flex-wrap -m-2">-->
+
+{% if context['heart'] %}
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Attributes</th>
+                    <th>Your Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Age</td>
+                    <td>{{context['age']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Sex</td>
+                    <td>{{context['sex']}}</td>
+                </tr>
+                   <tr>
+                    <td>Resting Blood Pressure</td>
+                    <td>{{context['rbp']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Cholestrol</td>
+                    <td>{{context['chol']}}</td>
+                </tr>
+                   <tr>
+                    <td>Fasting Blood Sugar</td>
+                    <td>{{context['fbs']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Chest Pain Type</td>
+                    <td>{{context['cpt']}}</td>
+                </tr>
+                   <tr>
+                    <td>ECG</td>
+                    <td>{{context['ecg']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Maximum Heart Rate</td>
+                    <td>{{context['maxhr']}}</td>
+                </tr>
+                   <tr>
+                    <td>Age</td>
+                    <td>{{context['age']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Exang</td>
+                    <td>{{context['exang']}}</td>
+                </tr>
+                   <tr>
+                    <td>Oldpeak</td>
+                    <td>{{context['oldpeak']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Slope</td>
+                    <td>{{context['slope']}}</td>
+                </tr>
+                   <tr>
+                    <td>Number of Vessels Coloured</td>
+                    <td>{{context['fcolor']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Thal</td>
+                    <td>{{context['thal']}}</td>
+                </tr>
+                   <tr>
+                    <td>Output</td>
+                    <td>{{context['output']}}</td>
+                </tr>
+               
+               
+            </tbody>
+        </table>
+        {% elif context['diabetes']%}
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Attributes</th>
+                    <th>Your Input</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Age</td>
+                    <td>{{context['age']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Number of Pregnancies</td>
+                    <td>{{context['preg']}}</td>
+                </tr>
+                   <tr>
+                    <td>Plasma Glucose</td>
+                    <td>{{context['glu']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Skin Thickness</td>
+                    <td>{{context['st']}}</td>
+                </tr>
+                   <tr>
+                    <td>Insulin</td>
+                    <td>{{context['ins']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Blood Pressure</td>
+                    <td>{{context['bp']}}</td>
+                </tr>
+                   <tr>
+                    <td>Body mass Index</td>
+                    <td>{{context['bmi']}}</td>
+                </tr>
+                <tr class="active-row">
+                    <td>Diabetes Pedigree Function</td>
+                    <td>{{context['dbf']}}</td>
+                </tr>
+              
+                   <tr>
+                    <td>Output</td>
+                    <td>{{context['output']}}</td>
+                </tr>
+               
+               
+            </tbody>
+        </table>
+        {% else %}
+              <table class="styled-table-pn">
+            <thead>
+                <tr>
+                    <th>X_ray Image</th>
+                    <th>Output</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{{context['path']}}"></td>
+                    <td>{{context['prediction']}}</td>
+                </tr>
+
+            </tbody>
+              </table>
+{% endif %}
+
+            </div>
+        <!--</div>-->
+    </section>
+<footer class="text-gray-700 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+
+    <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Designed & Developed By Deep Gojariya
+
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="text-gray-500" href="https://www.facebook.com/deep.gojariya.9" target="_blank">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg>
+      </a>
+
+      <a class="ml-3 text-gray-500" href="https://www.linkedin.com/in/deep-gojariya-b8a8a3199/?originalSubdomain=in" target="_blank">
+        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+          <circle cx="4" cy="4" r="2" stroke="none"></circle>
+        </svg>
+      </a>
+    </span>
+  </div>
+</footer>
+
+
+
+
+</body>

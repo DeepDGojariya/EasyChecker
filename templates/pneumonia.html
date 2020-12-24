@@ -1,0 +1,150 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>EasyChecker | Pneumonia</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        #custom-button {
+            padding: 10px;
+            color: white;
+            background-color: #009578;
+            border: 1px solid #000;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #custom-button:hover {
+            background-color: #00b28f;
+        }
+
+        #custom-text {
+            margin-left: 6px;
+            font-family: sans-serif;
+            color: #aaa;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <header class="text-gray-700 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
+                    <path d="M22 2L1 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <a href="{{url_for('home')}}" ><span class="ml-3 text-xl">EasyChecker</span></a>
+            </a>
+            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                <a class="mr-5 hover:text-gray-900" href="{{url_for('heart_disease')}}">Heart
+                    Disease</a>
+                <a class="mr-5 hover:text-gray-900" href="{{url_for('diabetes')}}">Diabetes</a>
+                <a class="mr-5 hover:text-gray-900" href="{{url_for('pneumonia')}}"
+                    style="text-decoration:underline">Pneumonia</a>
+
+            </nav>
+
+        </div>
+    </header>
+    <section class="text-gray-700 body-font overflow-hidden">
+
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full ">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Pneumonia Detection</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Just upload the image of your chest-Xray below and
+                    you're good to go!
+                </p>
+            </div>
+        </div>
+
+        <div class="lg:w-1/2 mx-auto flex flex-wrap" id="parent_of_img">
+            <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded preview" id="imgs"
+                src="https://dummyimage.com/512x512">
+
+            <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <form method="POST" action="{{url_for('pneumonia')}}" enctype="multipart/form-data">
+                <div class="p-2 w-full mt-24" >
+                    <input type="file" id="real-file" hidden="hidden" name="user_img" />
+                    <button type="button" id="custom-button">Upload Image</button>
+                    <span id="custom-text">No file chosen, yet.</span>
+                </div>
+                <div class="p-2 w-full ">
+                    <button 
+                        class="flex  text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Predict</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        
+    </section>
+    <footer class="text-gray-700 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+
+    <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Designed & Developed By Deep Gojariya
+
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="text-gray-500" href="https://www.facebook.com/deep.gojariya.9" target="_blank">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg>
+      </a>
+
+      <a class="ml-3 text-gray-500" href="https://www.linkedin.com/in/deep-gojariya-b8a8a3199/?originalSubdomain=in" target="_blank">
+        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+          <circle cx="4" cy="4" r="2" stroke="none"></circle>
+        </svg>
+      </a>
+    </span>
+  </div>
+</footer>
+    <script>
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+
+        customBtn.addEventListener("click", function () {
+            realFileBtn.click();
+        });
+
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+
+        const inpFile = document.getElementById('real-file');
+        const previewContainer = document.getElementById('parent_of_img');
+        const previewImage = previewContainer.querySelector('.preview');
+        
+        inpFile.addEventListener("change",function(){
+            const file = this.files[0];
+            if (file){
+                const reader = new FileReader();
+                
+                reader.addEventListener("load",function(){
+                    previewImage.setAttribute("src",this.result);
+                });
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+    </script>
+</body>
